@@ -32,14 +32,14 @@ else
    echo "phpmyadmin not installed"
 echo '<?php phpinfo(); ?>' >/var/www/html/phpinfo.php
    sudo apt-get install debconf-utils
-   sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password password mvixusa'
-   sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password mvixusa'
+   sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password password root'
+   sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password root'
    sudo apt-get -y install mysql-server
 
 echo 'phpmyadmin phpmyadmin/dbconfig-install boolean true' |sudo debconf-set-selections
-echo 'phpmyadmin phpmyadmin/app-password-confirm password mvixusa' |sudo debconf-set-selections
-echo 'phpmyadmin phpmyadmin/mysql/admin-pass password mvixusa' |sudo debconf-set-selections
-echo 'phpmyadmin phpmyadmin/mysql/app-pass password mvixusa' |sudo debconf-set-selections
+echo 'phpmyadmin phpmyadmin/app-password-confirm password root' |sudo debconf-set-selections
+echo 'phpmyadmin phpmyadmin/mysql/admin-pass password root' |sudo debconf-set-selections
+echo 'phpmyadmin phpmyadmin/mysql/app-pass password root' |sudo debconf-set-selections
 echo 'phpmyadmin phpmyadmin/reconfigure-webserver multiselect apache2' | debconf-set-selections
 
 sudo apt-get -y install phpmyadmin
